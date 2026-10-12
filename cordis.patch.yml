@@ -1,0 +1,8 @@
+# Register the AtomCode CodingPlan provider in the profile tree.
+#
+# The id only has to be unique inside the profile patch layer; the name is the
+# npm package that DSH loads. Registration does not change the profile's
+# current default model, and no browser (client) half is required.
+- insert:
+    - id: atomcode-codingplan
+      name: dsh-atomcode-codingplan

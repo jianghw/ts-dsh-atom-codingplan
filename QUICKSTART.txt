@@ -1,0 +1,31 @@
+DSH AtomCode CodingPlan — macOS 快速安装（0.2.0）
+
+1. 解压 dsh-atomcode-codingplan-0.2.0.zip（或直接使用本目录已有的 .tgz）。
+2. 在终端进入解压出的目录，运行：
+     ./install-macos.sh
+   默认安装到 desktop profile；其他 profile 用 ./install-macos.sh <profile>。
+3. 重启 DeepSeek Harness。
+4. 诊断插件状态（分阶段、脱敏输出）：
+     dsh plugin --profile desktop exec dsh-atomcode-codingplan doctor
+5. 首次授权：
+     dsh plugin --profile desktop exec dsh-atomcode-codingplan setup
+   setup 会自动下载并启动本机桥接程序，打开 AtomGit OAuth 授权页。
+   授权完成后插件自动创建内部 API Key，无需手工复制。
+6. 在 DSH 的模型选择器中选择 AtomCode CodingPlan 的模型。
+
+说明：
+- 首次启动时插件从 GitHub 下载固定版本（v1.0.9）的 Atom2Api 兼容桥接二进制，
+  校验 SHA-256 后在本机运行；无需手动安装 Docker、Go、clone 仓库或配置 Atom2Api。
+- 桥接仅监听 127.0.0.1；状态与凭据位于 ~/.dsh/atomcode-codingplan/（权限 0700/0600）。
+- 若 profile 的 cordis.patch.yml 中存在指向本插件且带 disabled: true 的条目，
+  插件不会被挂载，模型选择器里也不会出现该 Provider。
+
+验证状态（诚实说明）：
+- 已实测：真实 GitHub Release 下载与 SHA-256 校验、解压、仅回环启动、管理 API 认证、
+  API Key 创建与复用、模型目录读取、真实 SSE 字节流转为 DSH 原生 StreamChunk、
+  与真实 dsh-llm 0.2.0-rc.2 内核的协议一致性、doctor/status/stop。
+- 未实测：使用真实 AtomGit CodingPlan 账户完成 OAuth 授权、真实模型的一次完整对话、
+  DSH 桌面端模型选择器中的实际选择与工具调用回路。详见 README「仍需你本机验证」。
+
+风险提示：Atom2Api 的签名兼容层为社区实现，并非 AtomGit 官方 SDK；上游协议变化、
+服务条款或账号策略均可能导致不可用或账号受限。请自行评估后再用于重要任务。

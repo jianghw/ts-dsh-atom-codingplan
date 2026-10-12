@@ -1,0 +1,7 @@
+data: {"choices":[{"index":0,"delta":{"role":"assistant","content":""},"finish_reason":null}]}
+data: {"choices":[{"index":0,"delta":{"reasoning_content":"think"},"finish_reason":null}]}
+data: {"choices":[{"index":0,"delta":{"content":"Hel"},"finish_reason":null}]}
+data: {"choices":[{"index":0,"delta":{"content":"lo"},"finish_reason":null}]}
+data: {"choices":[{"index":0,"delta":{},"finish_reason":null}],"usage":{"prompt_tokens":11,"completion_tokens":7,"prompt_tokens_details":{"cached_tokens":3},"completion_tokens_details":{"reasoning_tokens":2}}}
+data: {"choices":[{"index":0,"delta":{},"finish_reason":"stop"}]}
+data: [DONE]

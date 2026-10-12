@@ -1,0 +1,54 @@
+{
+  "name": "dsh-atomcode-codingplan",
+  "displayName": "DSH AtomCode CodingPlan",
+  "version": "0.2.0",
+  "description": "Connect AtomGit CodingPlan models to DeepSeek Harness through a plugin-managed local bridge.",
+  "author": "Unofficial community plugin",
+  "license": "MIT",
+  "type": "module",
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js",
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "dsh-atomcode-codingplan": "./bin.js"
+  },
+  "files": [
+    "index.js",
+    "bridge.js",
+    "protocol.js",
+    "sse.js",
+    "translate.js",
+    "bin.js",
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE",
+    "THIRD_PARTY_NOTICES.md"
+  ],
+  "scripts": {
+    "test": "node --test test/plugin.test.js test/bridge.test.js",
+    "check": "node --check index.js && node --check bridge.js && node --check bin.js && node --check sse.js && node --check translate.js && node --check protocol.js && npm test"
+  },
+  "engines": {
+    "node": ">=22.19.0"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "^4.0.2",
+    "@deepseek-ai/dsh-llm": "^0.1.2-rc.1 || ^0.1.7-rc.2 || ^0.2.0-rc.1",
+    "@deepseek-ai/schemastery": "^3.18.4"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "keywords": [
+    "deepseek-harness",
+    "dsh-plugin",
+    "atomcode",
+    "atomgit",
+    "codingplan",
+    "model-provider"
+  ]
+}
